@@ -143,9 +143,9 @@ const digitSum = (n) => {
 };
 
 digitSum(10);
-// digitSum(42);
-// digitSum(71);
-// digitSum(89);
+digitSum(42);
+digitSum(71);
+digitSum(89);
 
 /* *****
 Challenge 5
@@ -160,9 +160,43 @@ Example:
 Invoking "fibIndex(3)" should return "12".
 Because the 12th index in the Fibonacci sequence is 144, and 144 has three digits
 ***** */
-
+function mAdd(arr,array2){
+	array1 = Array.from(arr);
+	let carry = 0;
+	for(let i = 0; i<array2.length;i += 1){
+		let res = array1[i] + array2[i] + carry;
+		array1[i] = res % 10;
+		carry = Math.floor(res/10);
+	}
+	let cursor = array2.length;
+	while(carry !== 0){
+		if(array1.length == cursor ){
+			array1.push(carry)
+			carry = Math.floor(carry/10);
+		}else{
+			let res = array1[cursor] + carry;
+			array1[cursor] = res % 10;
+			carry = Math.floor(res/10);
+			cursor +=1;
+		}
+	}
+	return array1;
+}
+// console.log(mAdd([3,1], [1,2]));
 const fibIndex = (n) => {
-	// YOUR CODE HERE...
+	console.log('fibo: ',n);
+	let prevPrevN = [];
+	let prevN = [0];
+	let actual = [1];
+	let index = 1;
+	while(actual.length < n){
+		prevPrevN = prevN;
+		prevN = actual;
+		actual = mAdd(prevN, prevPrevN);
+		index += 1;
+	}
+	console.log(actual);
+	return index;
 };
 
 fibIndex(3);

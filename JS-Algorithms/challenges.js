@@ -1,3 +1,4 @@
+/* eslint-disable */
 /* *****
 Challenge 1
 
@@ -13,7 +14,14 @@ Invoking "readableTime(3690)" should return "01:01:30" (HH:MM:SS)
 ***** */
 
 const readableTime = (seconds) => {
-	// YOUR CODE HERE...
+	const hours = Math.floor(seconds / 3600);
+	const minutes = Math.floor((seconds % 3600) / 60);
+	const second = Math.floor((seconds % 3600) % 60);
+	const strHours = hours > 9 ? hours : '0'+hours;
+	const strMinutes = minutes > 9 ? minutes : '0'+minutes;
+	const strSecond = second > 9 ? second : '0'+second;
+	const display = `${strHours}:${strMinutes}:${strSecond}`;
+	return display;
 };
 
 readableTime(458);

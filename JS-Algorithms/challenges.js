@@ -49,7 +49,13 @@ Invoking "circularArray(2)" should return "["Island", "Japan", "Israel", "German
 const COUNTRY_NAMES = ['Germany', 'Norway', 'Island', 'Japan', 'Israel'];
 
 const circularArray = (index) => {
-	// YOUR CODE HERE...
+	const len = COUNTRY_NAMES.length;
+	const ind = index%len;
+	const array = [];
+	for(let i = 0 ; i < len ; i += 1){
+		array.push(COUNTRY_NAMES[(ind+i)%len]);
+	}
+	return array;
 };
 
 circularArray(2);

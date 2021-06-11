@@ -83,8 +83,20 @@ because 1^1 + 2^2 + 3^3 + 4^4 + 5^5 + 6^6 + 7^7 + 8^8 + 9^9 + 10^10 = 1040507131
 The last 3 digits for the sum of powers from 1 to 10 is "317"
 ***** */
 
+
+
 const ownPower = (number, lastDigits) => {
-	// YOUR CODE HERE...
+	const mod = Math.pow(10,lastDigits);
+	let sum = 0;
+	for(let i = 1 ; i <= number ; i+=1){
+		let power = 1;
+		for(let j = 0; j < i ; j += 1){
+			power = ((power % mod) * (i % mod)) % mod;
+		}
+		sum = ((sum % mod) + (power % mod)) % mod;
+	}
+	const result = sum.toString()
+	return result.length <lastDigits ? '0'.repeat(lastDigits-result.length)+result : result;
 };
 
 ownPower(10, 3);

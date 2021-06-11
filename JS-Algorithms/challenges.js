@@ -184,7 +184,6 @@ function mAdd(arr,array2){
 }
 // console.log(mAdd([3,1], [1,2]));
 const fibIndex = (n) => {
-	console.log('fibo: ',n);
 	let prevPrevN = [];
 	let prevN = [0];
 	let actual = [1];
@@ -195,7 +194,6 @@ const fibIndex = (n) => {
 		actual = mAdd(prevN, prevPrevN);
 		index += 1;
 	}
-	console.log(actual);
 	return index;
 };
 

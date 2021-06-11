@@ -119,15 +119,33 @@ Example:
 Invoking "digitSum(10)" should return "27".
 Since 10! === 3628800 and you sum 3 + 6 + 2 + 8 + 8 + 0 + 0
 ***** */
-
+function multiply(array,num){
+	let carry = 0;
+	let len = array.length;
+	for(let i = 0 ; i < len ; i += 1){
+		let res = (num*array[i] + carry);
+		array[i] = res % 10;
+		carry = Math.floor(res/10);
+	}
+	while(carry !== 0){
+		array.push(carry % 10);
+		carry = Math.floor(carry/10);
+	}
+	return array;
+}
 const digitSum = (n) => {
-	// YOUR CODE HERE...
+	let res = [1];
+	for(let i = 1; i <= n ; i +=1){
+		multiply(res,i);
+	}
+	const sum = res.reduce((a,b) => a+b);
+	return sum;
 };
 
 digitSum(10);
-digitSum(42);
-digitSum(71);
-digitSum(89);
+// digitSum(42);
+// digitSum(71);
+// digitSum(89);
 
 /* *****
 Challenge 5

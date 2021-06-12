@@ -75,6 +75,7 @@ function setOperation(oper) {
 		display.textContent = currentVal;
 	}else{
 		if(op !== 0){
+			if(!mode)return;
 			const value = makeOperation();
 			accumulator = value;
 			if(value === 0){
